@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height: 100%;
+}
+.main {
+    position: relative;
+    top: 50%;
+}
+.box {
+    position: relative;
+    top: -100px;
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+.item {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #fc0;
+}
+.left_top {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+}
+.right_bottom {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+}
