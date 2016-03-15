@@ -28,22 +28,26 @@
     margin-top: 20px;
 }
 
+.wrap {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+}
+
 @media (min-width: 641px) {
     .wrap {
-        display: flex;
-        padding: 0 20px;
-        flex-wrap: wrap;
-        justify-content: space-between;
         align-items: center;
+        -webkit-align-items: center;
     }
 }
 @media (max-width: 640px) {
     .wrap {
-        padding: 0 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         align-items: flex-start;
+        -webkit-align-items: flex-start;
     }
     .box4 {
         order: -1;
