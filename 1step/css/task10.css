@@ -33,7 +33,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    display: -webkit-flex;
+    display: -webkit-flex;          /*  chrome and safari   */
     -webkit-flex-wrap: wrap;
     -webkit-justify-content: space-between;
 }
@@ -51,5 +51,6 @@
     }
     .box4 {
         order: -1;
+        -webkit-order: -1;
     }
 }
