@@ -62,18 +62,45 @@ function randomBuildData(seed) {
     return returnData;
 }
 
+//鼠标移上去的时候显示具体信息
+function hoverDetail(e){
+    var detail= e.childNodes[0];
+    detail.style.visibility='visible';
+}
+
+//鼠标移除时候隐藏信息
+function hideDetail(e){
+    var detail= e.childNodes[0];
+    detail.style.visibility='hidden';
+}
+
+//绑定事件函数
+function on(element,eventName,listener) {
+    if(element.addEventListener) {
+        element.addEventListener(eventName,listener,false);
+    }
+    else if(element.attachEvent) {
+        element.attachEvent('on'+eventName,listener);
+    }
+    else
+        element['on'+eventName]=listener;
+}
+
+
 /**
  * 渲染图表
  */
 function renderChart() {
     var aqiChartWrap=document.getElementById('aqi-chart-wrap');
     var color='';
+    console.log(chartData);
     text='';
     for(var item in chartData) {        //遍历每个chartData数据
         color='rgb('+parseInt(256*Math.random())+','+
             parseInt(256*Math.random())+','+parseInt(256*Math.random())+')';
-        text+='<div class="chat_item" title="'+chartData[item]+'" style="height: '+
-            chartData[item]+'px;background-color:'+color+'"></div>';
+        text+='<div class="chat_item" onmouseover="hoverDetail(this)" onmouseout="hideDetail(this)"  style="height: '+
+            chartData[item]+'px;background-color:'+color+'">'+
+            '<span class="detail">date: '+item+'<br />num: '+chartData[item]+'</span>'+'</div>';
     }
     aqiChartWrap.innerHTML = text;
 }
@@ -110,7 +137,8 @@ function citySelectChange() {
  */
 function initGraTimeForm() {
     //radio 点击事件绑定
-    formGraTime.addEventListener('click',graTimeChange,false);
+    on(formGraTime,'click',graTimeChange);
+    //formGraTime.addEventListener('click',graTimeChange,false);
 }
 /**
  * 初始化城市Select下拉选择框中的选项
@@ -124,7 +152,8 @@ function initCitySelector() {
     }
 
     // 给select设置事件，当选项发生变化时调用函数citySelectChange
-    citySelect.addEventListener('change',citySelectChange,false);
+    on(citySelect,'change',citySelectChange);
+    //citySelect.addEventListener('change',citySelectChange,false);
 }
 
 /**
@@ -135,56 +164,57 @@ function initAqiChartData() {
     // 处理好的数据存到 chartData 中
     chartData={};
     var sum=0,i= 0,char={};
-
     for(item in aqiSourceData) {
-        //console.log(typeof item);
-        //console.log(aqiSourceData['北京']);
-        //console.log(aqiSourceData.北京);
         if(citySelect.value==item) {
             char=aqiSourceData[item];
         }
     }
-    if(pageState.nowGraTime=="day") {
-        chartData=char;
-    }
-    else if(pageState.nowGraTime=='week') {
-        sum=0;i=0;
-        for(item in char) {
+    switch (pageState.nowGraTime){
+        case 'day':
+            chartData=char;
+            break;
+        case 'week':
+            sum=0;i=0;
+            var week=0;
+            for(item in char) {
             //console.log(new Date(item).getDay());
-            sum+=char[item];
-            i++;
-            if(new Date(item).getDay()==6) {
-                chartData[item]=sum/i;
-                i=0;
-                sum=0;
+                sum+=char[item];
+                i++;
+                if(new Date(item).getDay()==6) {        //判断是否是周日
+                    week++;
+                    console.log(week);
+                    chartData['2016年第'+week+'周']=parseInt(sum/i);
+                    i=0;
+                    sum=0;
+                }
             }
-        }
-        if(i!=0) {
-            chartData[item]=sum/i;
-        }
-    }
-    else if(pageState.nowGraTime=='month') {
-        sum=0;i=0;
-        var mouth;
-        for(item in char) {
-            var date=new Date(item);
-
-            //console.log(date.getMonth());
-
-            if(date.getMonth()!=mouth) {
-                mouth=date.getMonth();
-                if(sum!=0)
-                    chartData[item]=sum/i;
-                mouth=date.getMonth();
-                sum=0;
-                i=0;
+            if(i!=0) {
+                week++;
+                chartData['2016年第'+week+'周']=parseInt(sum/i);
             }
-            sum+=char[item];
-            i++;
-        }
-        if(i!=0) {
-            chartData[item]=sum/i;
-        }
+            break;
+        case 'month':
+            sum=0;i=0;
+            var mouth=1;
+            for(item in char) {
+                var date=new Date(item);
+                //console.log(date.getMonth());
+                if(date.getMonth()!=mouth) {
+                    mouth=date.getMonth();
+
+                    if(sum!=0)
+                        chartData[date.getFullYear()+'-'+ (mouth ? ('0'+mouth) : mouth)]=parseInt(sum/i);
+                    sum=0;
+                    i=0;
+                }
+                sum+=char[item];
+                i++;
+            }
+            if(i!=0) {
+                mouth++;
+                chartData[date.getFullYear()+'-'+ (mouth ? ('0'+mouth) : mouth)]=parseInt(sum/i);
+            }
+            break;
     }
     // 调用图表渲染函数
     renderChart();
