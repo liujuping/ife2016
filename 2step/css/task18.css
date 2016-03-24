@@ -7,17 +7,98 @@
 body {
     text-align: center;
 }
-@keyframes moveIn {
+@keyframes moveInR {
     0% {
-        left: 50%;
+        left: 100%;
+        width: 2px;
+        margin: 5px 0;
+    }
+    50% {
+        left: 0;
+        width: 2px;
+        margin: 5px 0;
     }
     100% {
-        left: 0;
+        width: 30px;
+        margin: 5px;
     }
+}
+@keyframes moveInL {
+    0% {
+        left: -100%;
+        width: 2px;
+        margin: 5px 0;
+    }
+    50% {
+        left: 0;
+        width: 2px;
+        margin: 5px 0;
+    }
+    100% {
+        width: 30px;
+        margin: 5px;
+    }
+}
+@keyframes moveOutL {
+    0% {
+        left: 0;
+        width: 30px;
+        margin: 5px 5px;
+    }
+    50% {
+        left: 0;
+        width: 5px;
+        height: 5px;
+    }
+    100% {
+        left: -100%;
+        width: 0;
+        margin: 5px 0;
+    }
+}
+@keyframes moveOutR {
+    0% {
+        left: 0;
+        width: 30px;
+        margin: 5px 5px;
+    }
+    50% {
+        left: 0;
+        width: 5px;
+        height: 5px;
+    }
+    100% {
+        left: 100%;
+        width: 0;
+        margin: 5px 0;
+    }
+}
+.moveInL {
+    -webkit-animation: moveInL 2s;
+    -o-animation: moveInL 2s;
+    animation: moveInL 2s;
+}
+.moveInR {
+    -webkit-animation: moveInR 2s;
+    -o-animation: moveInR 2s;
+    animation: moveInR 2s;
+}
+.moveOutL {
+    -webkit-animation: moveOutL 2s;
+    -o-animation: moveOutL 2s;
+    animation: moveOutL 2s;
+}
+.moveOutR {
+    -webkit-animation: moveOutR 2s;
+    -o-animation: moveOutR 2s;
+    animation: moveOutR 2s;
 }
 #box>div {
     position: relative;
-    animation: moveIn 2s;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
     width: 30px;
     height: 30px;
     background-color: red;
