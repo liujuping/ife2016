@@ -22,7 +22,7 @@ function on(element,eventName,listener) {
 on(btn_box,'click',function(e){
     var str=ipt.value;
 
-        if(!str || parseInt(str)>100 || parseInt(str)<0 || /[^0-9]/.test(str)) {
+    if(!str || parseInt(str)>100 || parseInt(str)<0 || /[^0-9]/.test(str)) {
         alert('请输入0-100之间的数字');
         return;
     }
