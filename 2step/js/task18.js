@@ -20,13 +20,12 @@ function on(element,eventName,listener) {
 
 // 事件代理，为四个按钮绑定事件.
 on(btn_box,'click',function(e){
-    var str=parseInt(ipt.value);
     if(!str || str>100 || str<0 || /[^0-9]/.test(str)) {
         alert('请输入0-100之间的数字');
         return;
     }
-
-    var p=document.createElement('div'),
+    var str=parseInt(ipt.value),
+        p=document.createElement('div'),
         text=document.createTextNode(str);
     p.appendChild(text);
 
