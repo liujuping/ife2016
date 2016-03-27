@@ -47,7 +47,7 @@ body {
         width: 5px;
         margin: 5px 5px;
     }
-    20% {
+    50% {
         left: 0;
         width: 5px;
     }
@@ -64,7 +64,7 @@ body {
         width: 5px;
         margin: 5px 5px;
     }
-    20% {
+    50% {
         left: 0;
         width: 5px;
     }
@@ -119,14 +119,14 @@ body {
     animation: moveInR 1s;
 }
 .moveOutL {
-    -webkit-animation: moveOutL 0.2s;
-    -o-animation: moveOutL 0.2s;
-    animation: moveOutL 0.2s;
+    -webkit-animation: moveOutL 1s;
+    -o-animation: moveOutL 1s;
+    animation: moveOutL 1s;
 }
 .moveOutR {
-    -webkit-animation: moveOutR 0.2s;
-    -o-animation: moveOutR 0.2s;
-    animation: moveOutR 0.2s;
+    -webkit-animation: moveOutR 1s;
+    -o-animation: moveOutR 1s;
+    animation: moveOutR 1s;
 }
 #box>div {
     position: relative;

@@ -6,7 +6,8 @@ var box=document.getElementById('box'),      //图表区
     ipt=document.getElementById('ipt'),      //输入框
     btn_box=document.getElementById('btn_box'),        //按钮容器，
     obj=box.children,       //插入的节点
-    timer;
+    timer,
+    moveNum=[0,0];
 
 //绑定事件函数
 function on(element,eventName,listener) {
@@ -48,13 +49,26 @@ function moveOut(name) {
         alert('数据为空，不能再移出');
         return 0;
     }
-    else if(name=='left_out') {
-        box.firstElementChild.className='moveOutL';          //设置移出的动画
-        setTimeout(function(){box.removeChild(box.firstElementChild)},200);     //动画完成之后将节点删除
+    /*
+    * moveNum处理，当多次点击动画时，出现无法找到适当节点
+    *
+    * moveNum［0］＝ n 记录左侧有多少正在处于离开的节点，但是还没有被移除节点，下一次再点击动画时，处理的是子节点的第n个
+    * */
+    if(name=='left_out') {
+        obj[moveNum[0]].className='moveOutL';          //设置移出的动画
+        setTimeout(function(){
+            box.removeChild(box.firstElementChild);
+            moveNum[0]--;
+        },1000);     //动画完成之后将节点删除
+        moveNum[0]++;
     }
     else if(name=='right_out') {
-        box.lastElementChild.setAttribute('class','moveOutR');
-        setTimeout(function(){box.removeChild(box.lastElementChild)},200);
+        obj[obj.length-1-moveNum[1]].setAttribute('class','moveOutR');
+        setTimeout(function(){
+            box.removeChild(box.lastElementChild);
+            moveNum[1]--;
+        },1000);
+        moveNum[1]++;
     }
 }
 
