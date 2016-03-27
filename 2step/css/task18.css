@@ -9,7 +9,7 @@ body {
 }
 @keyframes moveInR {
     0% {
-        left: 100%;
+        left: 50%;
         width: 2px;
         margin: 5px 0;
     }
@@ -19,13 +19,14 @@ body {
         margin: 5px 0;
     }
     100% {
+        left: 0;
         width: 30px;
         margin: 5px;
     }
 }
 @keyframes moveInL {
     0% {
-        left: -100%;
+        left: -50%;
         width: 2px;
         margin: 5px 0;
     }
@@ -35,6 +36,7 @@ body {
         margin: 5px 0;
     }
     100% {
+        left: 0;
         width: 30px;
         margin: 5px;
     }
@@ -51,7 +53,7 @@ body {
         height: 5px;
     }
     100% {
-        left: -100%;
+        left: -50%;
         width: 0;
         margin: 5px 0;
     }
@@ -68,7 +70,7 @@ body {
         height: 5px;
     }
     100% {
-        left: 100%;
+        left: 50%;
         width: 0;
         margin: 5px 0;
     }
@@ -95,10 +97,10 @@ body {
 }
 #box>div {
     position: relative;
-    -webkit-transition: left 2s;
-    -moz-transition: left 2s;
-    -o-transition: left 2s;
-    transition: left 2s;
+    /*-webkit-transition: left 2s;*/
+    /*-moz-transition: left 2s;*/
+    /*-o-transition: left 2s;*/
+    /*transition: left 2s;*/
     width: 30px;
     height: 30px;
     background-color: red;

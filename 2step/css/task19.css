@@ -21,6 +21,7 @@ body {
         margin: 5px 0;
     }
     100% {
+        left: 0;
         width: 5px;
         margin: 5px;
     }
@@ -37,6 +38,7 @@ body {
         margin: 5px 0;
     }
     100% {
+        left: 0;
         width: 5px;
         margin: 5px;
     }
