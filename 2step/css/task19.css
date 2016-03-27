@@ -1,15 +1,17 @@
 #box {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-end;
     justify-content: center;
     margin: 50px;
+    height: 500px;
 }
 body {
     text-align: center;
 }
 @keyframes moveInR {
     0% {
-        left: 100%;
+        left: 50%;
         width: 2px;
         margin: 5px 0;
     }
@@ -19,13 +21,13 @@ body {
         margin: 5px 0;
     }
     100% {
-        width: 30px;
+        width: 5px;
         margin: 5px;
     }
 }
 @keyframes moveInL {
     0% {
-        left: -100%;
+        left: -50%;
         width: 2px;
         margin: 5px 0;
     }
@@ -35,75 +37,104 @@ body {
         margin: 5px 0;
     }
     100% {
-        width: 30px;
+        width: 5px;
         margin: 5px;
     }
 }
 @keyframes moveOutL {
     0% {
         left: 0;
-        width: 30px;
+        width: 5px;
         margin: 5px 5px;
     }
-    50% {
+    20% {
         left: 0;
         width: 5px;
-        height: 5px;
     }
     100% {
-        left: -100%;
+        left: -50%;
         width: 0;
         margin: 5px 0;
+        height: 5px;
     }
 }
 @keyframes moveOutR {
     0% {
         left: 0;
-        width: 30px;
+        width: 5px;
         margin: 5px 5px;
     }
-    50% {
+    20% {
         left: 0;
         width: 5px;
-        height: 5px;
     }
     100% {
-        left: 100%;
+        left: 50%;
         width: 0;
         margin: 5px 0;
+        height: 5px;
+
     }
 }
+@keyframes LeftMove {
+    0% {
+        position: relative;
+        left: 0;
+    }
+    100% {
+        position: relative;
+        background-color: yellow;
+        left: -15px;
+    }
+}
+@keyframes RightMove {
+    0% {
+        position: relative;
+        left: 0;
+    }
+    100% {
+        position: relative;
+        background-color: yellow;
+        left: 15px;
+    }
+}
+.LeftMove {
+    -webkit-animation: LeftMove 0.4s;
+    -o-animation: LeftMove 0.4s;
+    animation: LeftMove 0.4s;
+}
+.RightMove {
+    -webkit-animation: RightMove 0.4s;
+    -o-animation: RightMove 0.4s;
+    animation: RightMove 0.4s;
+}
 .moveInL {
-    -webkit-animation: moveInL 2s;
-    -o-animation: moveInL 2s;
-    animation: moveInL 2s;
+    -webkit-animation: moveInL 1s;
+    -o-animation: moveInL 1s;
+    animation: moveInL 1s;
 }
 .moveInR {
-    -webkit-animation: moveInR 2s;
-    -o-animation: moveInR 2s;
-    animation: moveInR 2s;
+    -webkit-animation: moveInR 1s;
+    -o-animation: moveInR 1s;
+    animation: moveInR 1s;
 }
 .moveOutL {
-    -webkit-animation: moveOutL 2s;
-    -o-animation: moveOutL 2s;
-    animation: moveOutL 2s;
+    -webkit-animation: moveOutL 0.2s;
+    -o-animation: moveOutL 0.2s;
+    animation: moveOutL 0.2s;
 }
 .moveOutR {
-    -webkit-animation: moveOutR 2s;
-    -o-animation: moveOutR 2s;
-    animation: moveOutR 2s;
+    -webkit-animation: moveOutR 0.2s;
+    -o-animation: moveOutR 0.2s;
+    animation: moveOutR 0.2s;
 }
 #box>div {
     position: relative;
-    -webkit-transition: left 2s;
-    -moz-transition: left 2s;
-    -o-transition: left 2s;
-    transition: left 2s;
-    width: 30px;
-    height: 30px;
+    -webkit-transition: left 1s;
+    -moz-transition: left 1s;
+    -o-transition: left 1s;
+    transition: left 1s;
+    width: 5px;
     background-color: red;
-    color: #fff;
     margin: 5px;
-    text-align: center;
-    line-height: 30px;
 }
