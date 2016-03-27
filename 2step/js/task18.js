@@ -88,3 +88,15 @@ on(btn_box,'click',function(e){
     }
 });
 
+// 事件代理，点击元素时，该元素从队列中删除
+on(box,'click',function(e) {
+    var target = e.target;
+    console.log(target.className);
+    if(target.className) {
+        target.className = 'moveOutR';
+        setTimeout(function () {
+            box.removeChild(target);
+        }, 1000);
+    }
+
+});

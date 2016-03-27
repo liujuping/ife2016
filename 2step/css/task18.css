@@ -97,6 +97,7 @@ body {
 }
 #box>div {
     position: relative;
+    cursor: pointer;
     /*-webkit-transition: left 2s;*/
     /*-moz-transition: left 2s;*/
     /*-o-transition: left 2s;*/

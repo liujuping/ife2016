@@ -131,6 +131,7 @@ body {
     animation: moveOutR 1s;
 }
 #box>div {
+    cursor: pointer;
     position: relative;
     -webkit-transition: left 1s;
     -moz-transition: left 1s;

@@ -25,8 +25,12 @@ function on(element,eventName,listener) {
 function moveIn(name,num){
     var value = num==undefined ? ipt.value : num;    //如果num存在，则value＝num，否则值取输入框的值
     //判断输入的值是否符合要求
-    if(!value || parseInt(value)>100 || parseInt(value)<0 || /[^0-9]/.test(value)) {
-        alert('请输入0-100之间的数字');
+    if(!value || parseInt(value)>100 || parseInt(value)<10 || /[^0-9]/.test(value)) {
+        alert('请输入10-100之间的数字');
+        return;
+    }
+    else if(obj.length>60) {
+        alert('数据已经超过60个，不能再增加了！！！');
         return;
     }
     var p=document.createElement('div');        //创建div节点
@@ -99,10 +103,10 @@ function random(){
     box.innerHTML='';     //清空数据
     for(var i=0;i<30;i++) {
         if(i%2==0) {
-            moveIn('left_in',parseInt(Math.random()*80+20));
+            moveIn('left_in',parseInt(Math.random()*90+10));
         }
         else {
-            moveIn('right_in',parseInt(Math.random()*80+20));
+            moveIn('right_in',parseInt(Math.random()*90+10));
         }
     }
 }
@@ -154,6 +158,17 @@ function sort(){
         j++;
     },500);
 }
+// 事件代理，点击元素时，该元素从队列中删除
+on(box,'click',function(e){
+    var target = e.target;
+    if(target.tagName) {
+        target.className='moveOutR';
+        setTimeout(function(){
+            box.removeChild(target);
+        },1000);
+    }
+});
+
 
 //设置颜色改变，便于观察
 function setColor(j){
