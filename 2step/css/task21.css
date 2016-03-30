@@ -1,0 +1,42 @@
+#box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px;
+}
+body {
+    text-align: center;
+}
+#tag_wrap {
+    margin: 10px;
+}
+#lover_box,
+#tag_box {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin: 20px;
+}
+.item {
+    height: 20px;
+    background-color: red;
+    color: #fff;
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.item>span {
+    transition: width 0.2s linear;
+    display: inline-block;
+    width: 0;
+    height: 16px;
+    overflow: hidden;
+}
+.item:hover>span {
+    transition: width 0.2s linear;
+    width: 64px;
+    height: 16px;
+}
+.item:hover {
+    background-color: blue;
+}
