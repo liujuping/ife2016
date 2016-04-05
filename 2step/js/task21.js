@@ -59,7 +59,7 @@ ShowTag.prototype={
     },
     //将输入的值添加到数组中
     add:function(){
-        str = this.ipt.value.split(/[ ,、，\n\t]/);   //回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为间隔
+        str = this.ipt.value.split(/[ ,、， \n\t]/);   //回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为间隔
         for(var i=0 ;i<str.length;i++) {
             var item = str[i];
             if(item=='') {     //去掉空元素
