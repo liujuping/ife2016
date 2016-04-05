@@ -1,0 +1,60 @@
+
+#root,
+#root div {
+    display: flex;
+    position: relative;
+    min-width: 50px;
+    justify-content: space-around;
+    height: 50px;
+    border-radius: 100%;
+    margin: 100px 10px;
+    border: 1px solid #000;
+    background-color: red;
+}
+.left {
+    left: -50px;
+}
+.right {
+    right: -50px;
+}
+.left:before,
+.right:before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 58px;
+    bottom: 52px;
+    left: 50%;
+    transform-origin: bottom;
+    background-color: red;
+}
+.left:before {
+    transform: rotateZ(30deg);
+}
+.right:before {
+    transform: rotateZ(-30deg);
+}
+
+/*#root {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+#root div {
+    position: absolute;
+    top: 100px;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 100%;
+}
+#root div:first-child {
+    left: -200%;
+}
+#root div:last-child {
+    right: -200%;
+}*/
