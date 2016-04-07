@@ -1,4 +1,3 @@
-
 #root,
 #root div {
     display: flex;
@@ -10,6 +9,12 @@
     margin: 100px 10px;
     border: 1px solid #000;
     background-color: red;
+}
+button {
+    width: 50px;
+    background-color: red;
+    color: #fff;
+    margin-top: 20px;
 }
 .left {
     left: -50px;
@@ -35,26 +40,6 @@
 .right:before {
     transform: rotateZ(-30deg);
 }
-
-/*#root {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    border-radius: 100%;
-    margin: 0 auto;
+.checked {
+    background-color: blue;
 }
-#root div {
-    position: absolute;
-    top: 100px;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    border-radius: 100%;
-}
-#root div:first-child {
-    left: -200%;
-}
-#root div:last-child {
-    right: -200%;
-}*/
