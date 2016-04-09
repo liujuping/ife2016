@@ -6,19 +6,12 @@ var tree_box = document.getElementById('root'),
     btn_box = document.getElementById('btn'),
     btn_speed = document.getElementById('btn_speed'),
     ipt=document.getElementById('ipt');
-/*var nodeObj = {
- value:root,
- children:[{},{},{}],
- text:''
- };*/
+
 function Tree(box) {
     this.box = box;
-    this.nodeObj = {};
     this.speed = 500;
     this.showArr = [];
     this.timer = null;
-
-    this.init();
 }
 
 //绑定事件函数
@@ -35,9 +28,6 @@ function on(element,eventName,listener) {
 }
 
 Tree.prototype = {
-    init: function () {
-        this.nodeObj = this.addNode(this.box);
-    },
     starEvent: function (Event) {
         //判断是否现在正在动画，如果在动画，点击没有效果
         if (this.timer != null) {
@@ -50,19 +40,19 @@ Tree.prototype = {
         this.showArr = [];
         switch (Event) {
             case 'deepFirst':
-                this.deepFirst(this.nodeObj);
+                this.deepFirst(this.box);
                 this.show();
                 break;
             case 'breadthFirst':
-                this.breadthFirst(new Array(this.nodeObj));
+                this.breadthFirst(this.box);
                 this.show();
                 break;
             case 'deepFirstSearch':
-                this.deepFirst(this.nodeObj);
+                this.deepFirst(this.box);
                 this.find();
                 break;
             case 'breadthFirstSearch':
-                this.breadthFirst(new Array(this.nodeObj));
+                this.breadthFirst(this.box);
                 this.find();
                 break;
             default :
@@ -72,7 +62,7 @@ Tree.prototype = {
     clear: function () {
         //点击之后把之前的样式清除
         for (var i = 0; i < this.showArr.length; i++) {
-            this.showArr[i].value.className = '';
+            this.showArr[i].className = '';
         }
     },
     //动态显示搜索的过程
@@ -87,7 +77,7 @@ Tree.prototype = {
         this.timer = setInterval((function () {
             //将上一次遍历的内容样式去除
             if (i) {
-                this.showArr[i - 1].value.className = '';
+                this.showArr[i - 1].className = '';
             }
             //如果遍历到最后一个元素之后，即没有找到，停止timer，提示没有该内容
             if (i == this.showArr.length) {
@@ -97,9 +87,9 @@ Tree.prototype = {
                 return;
             }
             //设置正在查找的元素的className
-            this.showArr[i].value.className = 'select';
+            this.showArr[i].className = 'select';
             //如果找到元素，停止循环，
-            if (str == this.showArr[i].text) {
+            if (str == this.showArr[i].children[0].textContent) {
                 alert('find it');
                 clearInterval(this.timer);
                 this.timer = null;
@@ -108,41 +98,27 @@ Tree.prototype = {
             i++;
         }).bind(this), this.speed);
     },
-    //初始化节点
-    addNode: function (node) {
-        var nodeObj = {},
-            children = node.children,
-            i;
-        nodeObj.children = [];
-        nodeObj.value = node;
-        nodeObj.text = children[0].innerText;
-        for (i = 1; i < children.length; i++) {
-            nodeObj.children.push(this.addNode(children[i]));
-        }
-        return nodeObj;
-    },
     //深度遍历
-    deepFirst: function (nodeObj) {
-        var i;
-        if (nodeObj != null) {
-            this.showArr.push(nodeObj);
-            for (i = 0; i < nodeObj.children.length; i++) {
+    deepFirst: function (box) {
+        if (box != null) {
+            this.showArr.push(box);
+            for (var i = 1; i < box.children.length; i++) {
                 //递归函数
-                this.deepFirst(nodeObj.children[i]);
+                this.deepFirst(box.children[i]);
             }
         }
     },
     //广度遍历
-    breadthFirst: function (parents) {
+    breadthFirst: function (box) {
         //parent存放父节点，取其子节点，放在数组后面，待之后将子节点做父节点用
-        var parent = parents.shift(),
-            i;
+        var parent = box,  //当前父元素
+            parents=[];    //还没有用的元素
         do {
             this.showArr.push(parent);
-            for (i = 0; i < parent.children.length; i++) {
+            for (var i = 1; i < parent.children.length; i++) {
                 parents.push(parent.children[i]);
             }
-            parent = parents.shift();
+            parent = parents.shift();  //取下一个父元素
         }
         while (parent);
     },
@@ -150,16 +126,17 @@ Tree.prototype = {
         var i = 0;
         //定时器遍历数组
         this.timer = setInterval((function () {
-            if (i) {
-                this.showArr[i - 1].value.className = '';
+            if (i!=0) {
+                this.showArr[i - 1].className = '';
             }
             if (i == this.showArr.length) {
                 clearInterval(this.timer);
                 this.timer = null;
-                return;
             }
-            this.showArr[i].value.className = 'select';
-            i++;
+            else {
+                this.showArr[i].className = 'select';
+                i++;
+            }
         }).bind(this), this.speed);
     },
     //改变遍历显示的速度
