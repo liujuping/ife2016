@@ -1,0 +1,21 @@
+#form_box {
+
+}
+#form_box form {
+    margin: 16px;
+}
+#form_box select {
+    width: 130px;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    margin: 0 8px;
+}
+.lable {
+    font-size: 14px;
+    font-weight: bold;
+}
+.hide {
+    display: none;
+}
+

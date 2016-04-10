@@ -6,8 +6,32 @@
     <link rel="stylesheet" href="css/task31.css">
 </head>
 <body>
+<section id="form_box">
+    <form id="select_type">
+        <input id="on_school" checked name="type" type="radio">
+        <label class="lable" for="on_school">在校生</label>
+        <input id="out_school" name="type" type="radio">
+        <label class="lable" for="out_school">非在校生</label>
+    </form>
+    <form id="select_school">
+        <label class="lable">学校</label>
+        <select id="location">
+            <option>北京</option>
+            <option value="">上海</option>
+        </select>
+        <select id="school">
+            <option>北京大学</option>
+        </select>
+    </form>
 
+    <form class="hide" id="select_workPlace">
+        <label class="lable">就业单位</label>
+        <input type="text">
+    </form>
 
+</section>
+
+<script src="js/school.js"></script>
 <script src="js/task31.js"></script>
 </body>
 </html>
