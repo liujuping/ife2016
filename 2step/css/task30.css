@@ -1,0 +1,38 @@
+#form {
+    width: 400px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#form input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: 1px solid rgb(199,199,199);
+    border-radius: 8px;
+}
+
+#form label {
+    display: block;
+    text-align: right;
+    position: absolute;
+    width: 70px;
+    left: -100px;
+    margin-top: 4px;
+}
+#form span {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgb(193,193,193);
+}
+#form .true {
+    color: rgb(39,198,82);
+    border-color: rgb(39,198,82);
+}
+#form .error {
+    color: red;
+    border-color: red;
+}
