@@ -28,7 +28,7 @@ on(btn,'click',function() {
         className = 'error';
     }
     else {
-        var total = (/\w/.test(text) ? text.match(/\w/g).length : 0) + (/[\u4e00-\u9fa5]/.test(text) ? text.match(/[\u4e00-\u9fa5]/g).length * 2 : 0);
+        var total = (/[\x00-\xff]/.test(text) ? text.match(/[\x00-\xff]/g).length : 0) + (/[^\x00-\xff]/.test(text) ? text.match(/[^\x00-\xff]/g).length * 2 : 0);
         if (total < 4) {
             tip_text = '姓名长度不能小于4个字符';
             className = 'error';
@@ -43,6 +43,7 @@ on(btn,'click',function() {
         }
     }
 
+    console.log(total);
     tip.innerText=tip_text;
     ipt.className=className;
     tip.className=className;
