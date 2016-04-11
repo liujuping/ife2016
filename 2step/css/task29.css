@@ -1,0 +1,54 @@
+.form {
+    width: 400px;
+    margin: 20px auto;
+    font-size: 16px;
+    overflow: hidden;
+}
+.lable {
+    display: block;
+    float: left;
+    font-weight: 800;
+    margin-right: 20px;
+    line-height: 34px;
+}
+.btn {
+    display: block;
+    float: left;
+    color: #fff;
+    padding: 8px 14px;
+    background-color: rgb(24,116,189);
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-left: 20px;
+    outline: none;
+}
+#ipt {
+    display: block;
+    float: left;
+    height: 28px;
+    width: 240px;
+    border: 2px solid rgb(199,199,199);
+    box-shadow: 0 0 2px 0 rgb(199,199,199);
+    outline: none;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+#tip {
+    display: inline-block;
+    margin-left: 52px;
+    margin-top: 8px;
+}
+.default {
+    color: rgb(169,169,169);
+}
+.error,
+#ipt.error {
+    color: red;
+    border-color: red;
+}
+.true,
+#ipt.true {
+    color: rgb(39,198,82);
+    border-color: rgb(39,198,82);
+}
