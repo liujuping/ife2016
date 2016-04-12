@@ -25,8 +25,8 @@ function on(element,eventName,listener) {
 //绑定点击事件
 on(start_search,'click',function(e) {
     var i= 0,
-        rg = new RegExp(str),      //正则表达式设置模糊查询
-        str = search_ipt.value;
+        str = search_ipt.value,
+        rg = new RegExp(str);      //正则表达式设置模糊查询
     for (i = 0; i < arr.length; i++) {      //设置的颜色还原
         box.children[i].style.backgroundColor = 'red';
     }
