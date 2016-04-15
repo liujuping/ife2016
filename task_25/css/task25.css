@@ -28,11 +28,11 @@
     margin: 0 4px;
 }
 .hide .text::before {
-    background: url("../../2step/img/close.png");
+    background: url("../img/close.png");
     background-size: cover;
 }
 .text::before {
-    background: url("../../2step/img/open.png") center;
+    background: url("../img/open.png") center;
     background-size: cover;
 }
 .add {
