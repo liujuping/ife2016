@@ -61,6 +61,9 @@ ShowTag.prototype= {
         //删除第n个元素，之后重新显示元素
         this.arr.splice(item.getAttribute('data-num'), 1);
         this.show();
+    },
+    getData:function(){
+        return this.arr;
     }
 };
 
