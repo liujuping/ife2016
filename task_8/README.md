@@ -1,4 +1,4 @@
-> # 任务八：响应式网格（栅格化）布局
+> # 任务八：响应式网格（栅格化）布局 [my demo](http://liujuping.github.io/ife2016/task_8/)
 
 #### 面向人群：
 有一定HTML/CSS基础的同学

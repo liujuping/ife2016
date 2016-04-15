@@ -1,4 +1,4 @@
-> # 任务十三：零基础JavaScript编码（一）
+> # 任务十三：零基础JavaScript编码（一）[my demo](http://liujuping.github.io/ife2016/task_13/)
 
 #### 面向人群：
 零基础或初学者

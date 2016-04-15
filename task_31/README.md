@@ -1,4 +1,4 @@
-> #任务三十一：表单（三）联动
+> #任务三十一：表单（三）联动 [my demo](http://liujuping.github.io/ife2016/task_31/)
 
 ##### 面向人群：
 初学者

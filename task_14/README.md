@@ -1,4 +1,4 @@
-> #任务十四：零基础JavaScript编码（二）
+> #任务十四：零基础JavaScript编码（二）[my demo](http://liujuping.github.io/ife2016/task_14/)
 
 ##### 面向人群：
 零基础或初学者

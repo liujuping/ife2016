@@ -1,4 +1,4 @@
-> #任务十八：基础JavaScript练习（一）
+> #任务十八：基础JavaScript练习（一）[my demo](http://liujuping.github.io/ife2016/task_18/)
 
 ##### 面向人群：
 零基础或初学者

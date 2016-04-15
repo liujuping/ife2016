@@ -1,4 +1,4 @@
-> #任务一：零基础HTML编码 easy
+> #任务一：零基础HTML编码 [my demo](http://liujuping.github.io/ife2016/task_1/)
 
 ##### 面向人群：
 零基础或初学者
