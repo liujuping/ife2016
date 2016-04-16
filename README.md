@@ -1,9 +1,9 @@
-> #任务二十：基础JavaScript练习（四）
+> #任务xxxxxxxxxxx  [my demo](http://liujuping.github.io/ife2016/task_x/)
 
 ##### 面向人群：
-Javascript初学者
+xxxx
 ##### 难度：
-中等
+xx
 ### 重要说明
 
 百度前端技术学院的课程任务是由百度前端工程师专为对前端不同掌握程度的同学设计。我们尽力保证课程内容的质量以及学习难度的合理性，但即使如此，真正决定课程效果的，还是你的每一次思考和实践。
@@ -12,21 +12,20 @@ Javascript初学者
 
 ### 任务目的
 
-*
+*xxx
 
 ### 任务描述
 
-*
+*xxx
 
 ### 任务注意事项
 
-*
+*xxx
 
 ### 任务协作建议
 
-*
+*xxx
 
 ### 在线学习参考资料
 
-* [JavaScript入门篇](http://www.imooc.com/view/36)
-* [MDN Javascript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+* [xxx](xxx)
