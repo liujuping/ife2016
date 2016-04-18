@@ -6,8 +6,44 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="universe" id='universe'>
+    <div class="planet" id="planet"></div>
+    <!--
+    <div data-status="run" class="ship" id="ship1">
+        <span class="ship-name">1号</span>
+        <span class="energy">84%</span>
+    </div>
+    <div class="ship" id="ship2">
+        <span class="ship-name">2号</span>
+        <span class="energy">84%</span>
+    </div>
+    -->
+</div>
+<div class="command" id="command">
+    <!--
+    <div class="command-obj">
+        <label>对一号飞船下达指令：</label>
+        <span class="command-btn">
+            <button type="button">开始飞行</button>
+            <button type="button">停止飞行</button>
+            <button type="button">销毁</button>
+        </span>
+    </div>
+    <div class="command-obj">
+        <label>对二号飞船下达指令：</label>
+        <span class="command-btn">
+            <button type="button">开始飞行</button>
+            <button type="button">停止飞行</button>
+            <button type="button">销毁</button>
+        </span>
+    </div>
+    -->
+    <div id="create-obj">
+        <button id="create_ship_btn" type="button">新的飞船起飞</button>
+    </div>
+</div>
 
-
+<script src="js/Ship.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

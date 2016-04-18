@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body,html {
+    height: 100%;
+}
+
+.universe {
+    background-color: #000;
+    height: 100%;
+}
+.planet {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgb(58,0,210);
+    border-radius: 100%;
+}
+.command {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #fff;
+    padding: 10px;
+}
+.command button {
+    margin: 4px;
+    padding: 2px 8px;
+}
+.ship {
+    position: absolute;
+    top: calc(40% - 15px + 215px);
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 30px;
+    background-color: rgb(152,153,154);
+    border-radius: 15px;
+    line-height: 30px;
+    text-align: center;
+
+    animation: rotate 10s infinite linear both paused;
+    transform-origin: 50px -200px;
+}
+.ship:before {
+    content: '';
+    display: block;
+    float: left;
+    height: 100%;
+    width: 12px;
+    border-radius: 15px 0 0 15px;
+    background-color: rgb(58,0,210);
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.ship[data-status="run"] {
+    animation-play-state: running;
+}
+.ship[data-status='pause'] {
+    animation-play-state: paused;
+}
+.status {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: -30px;
+    color: red;
+}
