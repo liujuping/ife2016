@@ -2,12 +2,16 @@
  * Created by wangtingdong on 16/4/18.
  */
 
+var SHIP_INIT_RESOURCE=100,    //飞船初始状态的能源百分比
+    SHIP_UNIVERSE_NODE=document.getElementById('universe'),
+    SHIP_RESOURCE_CONSUME_SPEED=200,
+    SHIP_RESOURCE_PRODUCT_SPEED=500;
+
 var Ship=(function(id) {
-    var _status = 'stop',
-        _resource = 80,
-        _universe = $('universe'),
-        _resourceReduceSpeed = 200,
-        _produceReduceSpeed = 500,
+    var _resource = SHIP_INIT_RESOURCE,
+        _universe = SHIP_UNIVERSE_NODE,
+        _resourceReduceSpeed = SHIP_RESOURCE_CONSUME_SPEED,
+        _produceReduceSpeed = SHIP_RESOURCE_PRODUCT_SPEED,
         _id = id,
         _resourceShowNode,
         _statusShowNode,
