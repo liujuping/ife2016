@@ -15,8 +15,8 @@ body,html {
     left: 50%;
     top: 40%;
     transform: translate(-50%,-50%);
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     background-color: rgb(58,0,210);
     border-radius: 100%;
     box-shadow: 0 0 0 48px #000,
@@ -24,7 +24,9 @@ body,html {
                 0 0 0 98px #000,
                 0 0 0 100px #fff,
                 0 0 0 148px #000,
-                0 0 0 150px #fff;
+                0 0 0 150px #fff,
+                0 0 0 198px #000,
+                0 0 0 200px #fff;
 }
 .command {
     position: fixed;
@@ -39,7 +41,6 @@ body,html {
 }
 .ship {
     position: absolute;
-    top: calc(40% - 15px + 200px);
     left: calc(50% - 50px);
     width: 100px;
     height: 30px;
@@ -49,7 +50,22 @@ body,html {
     text-align: center;
     perspective: 1200px;
     animation: rotate 10s infinite linear both paused;
+}
+.ship#ship1 {
+    top: calc(40% - 15px + 100px);
+    transform-origin: 50px -85px;
+}
+.ship#ship2 {
+    top: calc(40% - 15px + 150px);
+    transform-origin: 50px -135px;
+}
+.ship#ship3 {
+    top: calc(40% - 15px + 200px);
     transform-origin: 50px -185px;
+}
+.ship#ship4 {
+    top: calc(40% - 15px + 250px);
+    transform-origin: 50px -235px;
 }
 .ship:before {
     content: '';
@@ -62,10 +78,10 @@ body,html {
 }
 @keyframes rotate {
     0% {
-        transform: rotateZ(80deg) rotateX(0deg);
+        transform: rotate(0deg);
     }
     100% {
-        transform: rotateZ(80deg) rotateX(360deg);
+        transform: rotate(360deg);
     }
 }
 .ship[data-status="run"] {
