@@ -19,6 +19,12 @@ body,html {
     height: 300px;
     background-color: rgb(58,0,210);
     border-radius: 100%;
+    box-shadow: 0 0 0 48px #000,
+                0 0 0 50px #fff,
+                0 0 0 98px #000,
+                0 0 0 100px #fff,
+                0 0 0 148px #000,
+                0 0 0 150px #fff;
 }
 .command {
     position: fixed;
@@ -33,7 +39,7 @@ body,html {
 }
 .ship {
     position: absolute;
-    top: calc(40% - 15px + 215px);
+    top: calc(40% - 15px + 200px);
     left: calc(50% - 50px);
     width: 100px;
     height: 30px;
@@ -41,9 +47,9 @@ body,html {
     border-radius: 15px;
     line-height: 30px;
     text-align: center;
-
+    perspective: 1200px;
     animation: rotate 10s infinite linear both paused;
-    transform-origin: 50px -200px;
+    transform-origin: 50px -185px;
 }
 .ship:before {
     content: '';
@@ -56,10 +62,10 @@ body,html {
 }
 @keyframes rotate {
     0% {
-        transform: rotate(0deg);
+        transform: rotateZ(80deg) rotateX(0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotateZ(80deg) rotateX(360deg);
     }
 }
 .ship[data-status="run"] {
