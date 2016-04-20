@@ -7,10 +7,10 @@ body,html {
 }
 
 .universe {
-    background-color: #000;
+    background: url("../img/universe.jpg");
     height: 100%;
 }
-.planet {
+/*.planet {
     position: absolute;
     left: 50%;
     top: 40%;
@@ -27,6 +27,75 @@ body,html {
                 0 0 0 150px #fff,
                 0 0 0 198px #000,
                 0 0 0 200px #fff;
+}*/
+@keyframes move-map {
+    0% {
+        background-position: -849px 0; }
+
+    100% {
+        background-position: 0 0; }
+}
+.planet {
+    position: absolute;
+    left: calc(50% - 100px);
+    top: calc(40% - 100px);
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    border-radius: 50%;
+    background: url('../img/world.png') repeat-x;
+    background-color: rgb(197,242,246);
+    background-size: auto 100%;
+    animation: move-map 30s infinite linear;
+    transform: rotate(-30deg);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5) inset;
+}
+.trail {
+    width: 100%;
+    height: 100%;
+    transform: rotateX(60deg) rotateZ(-70deg) skew(30deg);
+}
+.trail div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.trail1 {
+    transform: scale(1.4,1.4);
+}
+.trail2 {
+    transform: scale(1.8,1.8);
+}
+.trail3 {
+    transform: scale(2.2,2.2);
+}
+.trail4 {
+    transform: scale(2.6,2.6);
+}
+.planet:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: -40px 10px 70px 10px rgba(0,0,0,0.5) inset;
+    z-index: 2;
+}
+
+.planet:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%);
 }
 .command {
     position: fixed;
