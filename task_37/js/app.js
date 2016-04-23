@@ -1,22 +1,9 @@
 /**
  * Created by wangtingdong on 16/4/23.
  */
-
-//绑定事件函数
-function on(element,eventName,listener) {
-    if (element.addEventListener) {
-        element.addEventListener(eventName, listener, false);
-    }
-    else if (element.attachEvent) {
-        element.attachEvent('on' + eventName, listener);
-    }
-    else {
-        element['on' + eventName] = listener;
-    }
-}
-
 /*
 * 弹出框组件
+* 给点击使弹出框消失的部分添加属性  data-btn="hide"
 * */
 
 var ClickOpen=(function(){
@@ -25,29 +12,24 @@ var ClickOpen=(function(){
     function init(clickNodeFn,openNodeFn) {
         clickNode=clickNodeFn;
         openNode=openNodeFn;
-
         defaultEvent();
     }
     function defaultEvent(){
         openNode.hidden='hidden';
-        on(clickNode,'click',showNode.bind(this,openNode));
-        //在遮盖层里绑定点击事件
-        on(openNode,'click',isHide)
+        clickNode.onclick=showNode;
+        //在遮盖层里绑定点击事件（事件代理）
+        openNode.onclick=hideNode;
     }
 
-    function showNode(node) {
-        node.hidden='';
+    function showNode() {
+        openNode.hidden='';
     }
 
-    function isHide(e){
+    function hideNode(e){
         var target= e.target;
         if(target.getAttribute('data-btn')=='hide') {
-            hideNode(openNode);
+            openNode.hidden='hidden';
         }
-    }
-
-    function hideNode(node){
-        node.hidden='hidden';
     }
 
     return {
@@ -61,9 +43,7 @@ var ClickOpen=(function(){
 * */
 
 var Tow=(function() {
-    var towNode,
-        startX,
-        startY;
+    var towNode, startX, startY;
 
     function init(towNodeFn) {
         towNode = towNodeFn;
@@ -77,17 +57,42 @@ var Tow=(function() {
         //当放下拖曳的位置时更改位置
         document.ondrop = DropMove;
         //取消拖曳的默认事件
-        document.ondragover = deleteDefaultEvent;
+        document.ondragover = dragOverEvent;
     }
 
-    function deleteDefaultEvent() {
-        return false;
+    function dragOverEvent(e) {
+        e.preventDefault();
     }
 
     //记录每次拖曳之前鼠标点击在元素的相对位置
     function recodeStartLocation(e) {
-        startX = e.pageX - e.target.offsetLeft;
-        startY = e.pageY - e.target.offsetTop;
+        startX = e.pageX - getElementLeft(e.target);
+        startY = e.pageY - getElementTop(e.target);
+    }
+
+    //获得元素与窗口左端的距离
+    function getElementLeft(element){
+        var Left=element.offsetLeft;
+        var parent=element.offsetParent;
+
+        while(parent!=null) {
+            Left+=parent.offsetLeft;
+            parent=parent.offsetParent;
+        }
+
+        return Left;
+    }
+
+    //获得元素与窗口顶部的距离
+    function getElementTop(element) {
+        var Top=element.offsetTop;
+        var parent=element.offsetParent;
+
+        while(parent!=null) {
+            Top+=parent.offsetTop;
+            parent=parent.offsetParent;
+        }
+        return Top;
     }
 
     //根据鼠标的移动移动位置
@@ -101,16 +106,14 @@ var Tow=(function() {
     }
 });
 
-
-var clickNode=document.getElementById('click'),
-    openNode=document.getElementById('clickOpen');
+var clickNode=document.getElementById('click'), //点击的按钮
+    openNode=document.getElementById('clickOpen'), //点击后打开的按钮
+    towNode=document.getElementById('towMove'); //拖曳的目标
 
 //初始化一个弹出框
 var clickOpen=new ClickOpen();
 clickOpen.init(clickNode,openNode);
-clickNode.click();
 
-var towNode=document.getElementById('towMove');
-
+//初始化拖曳框
 var tow=new Tow();
 tow.init(towNode);
