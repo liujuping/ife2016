@@ -7,8 +7,18 @@ body,html {
 }
 
 .universe {
+    position: relative;
+    width: 80%;
+    float: right;
     background: url("../img/universe.jpg");
     height: 100%;
+}
+.command {
+    width: 20%;
+    box-sizing: border-box;
+    float: left;
+    background-color: #fff;
+    padding: 10px;
 }
 /*.planet {
     position: absolute;
@@ -38,7 +48,7 @@ body,html {
 .planet {
     position: absolute;
     left: calc(50% - 100px);
-    top: calc(40% - 100px);
+    top: calc(50% - 100px);
     width: 200px;
     height: 200px;
     margin: 0;
@@ -53,7 +63,6 @@ body,html {
 .trail {
     width: 100%;
     height: 100%;
-    transform: rotateX(60deg) rotateZ(-70deg) skew(30deg);
 }
 .trail div {
     position: absolute;
@@ -97,13 +106,6 @@ body,html {
     opacity: 0.3;
     background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%);
 }
-.command {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    background-color: #fff;
-    padding: 10px;
-}
 .command button {
     margin: 4px;
     padding: 2px 8px;
@@ -121,20 +123,20 @@ body,html {
     animation: rotate 10s infinite linear both paused;
 }
 .ship#ship1 {
-    top: calc(40% - 15px + 100px);
-    transform-origin: 50px -85px;
+    top: calc(50% - 15px + 135px);
+    transform-origin: 50px -120px;
 }
 .ship#ship2 {
-    top: calc(40% - 15px + 150px);
-    transform-origin: 50px -135px;
+    top: calc(50% - 15px + 175px);
+    transform-origin: 50px -160px;
 }
 .ship#ship3 {
-    top: calc(40% - 15px + 200px);
-    transform-origin: 50px -185px;
+    top: calc(50% - 15px + 215px);
+    transform-origin: 50px -200px;
 }
 .ship#ship4 {
-    top: calc(40% - 15px + 250px);
-    transform-origin: 50px -235px;
+    top: calc(50% - 15px + 255px);
+    transform-origin: 50px -240px;
 }
 .ship:before {
     content: '';
