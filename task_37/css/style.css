@@ -30,8 +30,13 @@
     background-color: #fff;
     width: 340px;
     height: 240px;
-    left: calc(50% - 170px);
-    top: calc(50% - 120px);
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-170px,-120px);
+    -moz-transform: translate(-170px,-120px);
+    -ms-transform: translate(-170px,-120px);
+    -o-transform: translate(-170px,-120px);
+    transform: translate(-170px,-120px);
 }
 .OpenMain-header {
     position: absolute;
