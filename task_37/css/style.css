@@ -73,3 +73,6 @@
 [draggable="true"] {
     cursor: move;
 }
+[hidden="hidden"] {
+    display: none;
+}
