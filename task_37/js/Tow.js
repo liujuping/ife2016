@@ -6,34 +6,38 @@
  * */
 
 var Tow=(function() {
-    var towNode;
+    var towNode,startX,startY;
 
     function init(towNodeFn) {
         towNode = towNodeFn;
-        towNode.draggable = 'true';
+        towNode.setAttribute('draggable','true');
         defaultEvent();
     }
 
     function defaultEvent() {
-        //当放下拖曳的位置时更改位置
-        towNode.ondragend = DropMove;
-        //取消拖曳的默认事件
-        document.ondragover = dragOverEvent;
+        document.ondragover=preventDefault;
+        document.ondrop=preventDefault;
+
+        towNode.addEventListener('dragstart',setDataTransfer,false);
+        document.addEventListener('drop',DropMove,false);
     }
 
-    function dragOverEvent() {
-        return false;
+    function setDataTransfer(e){
+        e.dataTransfer.setData('Text',e.target.id);
+
+        startX = e.pageX - e.target.offsetLeft;
+        startY = e.pageY - e.target.offsetTop;
+    }
+
+    function preventDefault(e){
+        e.preventDefault();
     }
 
     //根据鼠标的移动移动位置
     function DropMove(e) {
-        var left = e.clientX,
-            top = e.clientY - towNode.offsetHeight,
-            maxLeft = document.body.offsetWidth - towNode.offsetWidth,
-            maxTop = document.body.offsetHeight - towNode.offsetHeight;
-        if (e.target.id == towNode.id && left > 0 && top > 0 && left < maxLeft && top < maxTop) {
-            towNode.style.left = left + 'px';
-            towNode.style.top = top + 'px';
+        if(e.dataTransfer.getData('Text') == towNode.id) {
+            towNode.style.left = (e.pageX - startX) + 'px';
+            towNode.style.top = (e.pageY - startY) + 'px';
         }
     }
 

@@ -47,7 +47,7 @@ var ClickOpen=(function() {
     function hideNode(e) {
         var target = e.target;
         if (target.getAttribute('data-btn') == 'hide') {
-            openNode.hidden = 'hidden';
+            openNode.setAttribute('hidden','hidden');
             //更改背景框的滚动
             judgeRoll('');
         }

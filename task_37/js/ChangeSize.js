@@ -11,7 +11,12 @@ var ChangeSize=(function() {
         maxHeight,
         minHeight,
         maxWidth,
-        minWidth;
+        minWidth,
+        recordTarget='',
+        startX,
+        startY,
+        startWidth,
+        startHeight;
 
     function init(data) {
         targetNode = data.target;
@@ -24,22 +29,49 @@ var ChangeSize=(function() {
     }
 
     function defaultEvent() {
+        document.ondragover=preventDefault;
+        document.ondrop=preventDefault;
+
         clickNode = createBtnNode();
-        clickNode.ondrag = changeTarget;
+        clickNode.addEventListener('dragstart',setDataTransfer,false);
+        clickNode.addEventListener('dragstart',recordData,false);
+        document.addEventListener('dragover',changeTarget,false);
+        document.addEventListener('drop',clearRecord,false);
+    }
+
+    function preventDefault(e){
+        e.preventDefault();
+    }
+
+    function recordData(e){
+        recordTarget= e.target.id;
+        startX= e.pageX;
+        startY= e.pageY;
+        startWidth=targetNode.offsetWidth;
+        startHeight=targetNode.offsetHeight;
+    }
+
+    function setDataTransfer(e){
+        e.dataTransfer.setData('Text',e.target.id);
     }
 
     function changeTarget(e) {
-        var width= e.clientX - getElementLeft(targetNode),
-            height= e.clientY - getElementTop(targetNode);
+        if (clickNode.id == recordTarget) {
+            var width = e.pageX - startX + startWidth,
+                height = e.pageY - startY + startHeight;
 
-        if (width > minWidth && width < maxWidth) {
-            targetNode.style.width = width + 'px';
+            if (width > minWidth && width < maxWidth) {
+                targetNode.style.width = width + 'px';
+            }
+            if (height > minHeight && height < maxHeight) {
+                targetNode.style.height = height + 'px';
+            }
         }
 
-        if (height > minHeight && height < maxHeight) {
-            targetNode.style.height = height + 'px';
-        }
-        e.preventDefault();
+    }
+
+    function clearRecord(){
+        recordTarget='';
     }
 
     //获得元素与窗口左端的距离
@@ -76,6 +108,7 @@ var ChangeSize=(function() {
             'bottom:-3px;' +
             'cursor:nw-resize';
         div.draggable = 'true';
+        div.id='changeSizeBtn';
         targetNode.appendChild(div);
         return div;
     }
