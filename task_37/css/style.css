@@ -28,28 +28,34 @@
 .OpenMain {
     position: absolute;
     background-color: #fff;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    width: 340px;
+    height: 240px;
+    left: calc(50% - 170px);
+    top: calc(50% - 120px);
 }
 .OpenMain-header {
-    height: 30px;
-    width: 300px;
-    line-height: 30px;
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    width: 100%;
+    box-sizing: border-box;
     color: #fff;
     background-color: red;
-    padding: 6px 20px;
 }
 .OpenMain-content {
-    height: 100px;
-    padding: 20px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 150%;
+    padding: 50px 20px 10px 20px;
 }
 .OpenMain-footer {
-    height: 30px;
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
     padding: 6px 20px;
 }
 .OpenMain-footer button {
