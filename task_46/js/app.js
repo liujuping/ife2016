@@ -188,7 +188,7 @@ function People(){
                 }
 
             }
-            else if (KEY_STATUS.up) {
+            if (KEY_STATUS.up) {
                 this.rotation = 270;
                 this.y -= this.speed;
                 if (this.y <= 0) {
