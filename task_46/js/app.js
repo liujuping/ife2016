@@ -114,7 +114,7 @@ function Background() {
     this.draw = function() {
         initMap();
         randomRoad();
-        createObstacle(100);
+        createObstacle(MAP.rows*MAP.cols/2);
         for(var i=0;i<MAP.rows;i++) {
             for(var j=0;j<MAP.cols;j++) {
                 if(MAP.arr[i][j]==1) {
