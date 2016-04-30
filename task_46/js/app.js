@@ -82,7 +82,7 @@ function Background() {
         var x=0, y= 0;
         while (x!=MAP.rows-2 || y != MAP.cols-2) {
             MAP.arr[x][y]=2;
-            if (y!=MAP.cols-2 && Math.random() > 0.5) {
+            if (y!=MAP.cols-2 && Math.random() > 0.7) {
                 y++;
             }
             else {
@@ -158,8 +158,16 @@ function People(){
             this.routeChange();
         }
         if (KEY_STATUS.left || KEY_STATUS.right || KEY_STATUS.down || KEY_STATUS.up) {
-            this.context.clearRect(this.x, this.y, this.width, this.height);
-            if (KEY_STATUS.left) {
+            var angleInRadians=this.rotation*Math.PI/180;
+            this.context.save();
+            this.context.translate(this.x+this.width/2,this.y+this.height/2);
+            this.context.rotate(angleInRadians);
+            this.context.clearRect(-this.width/2,-this.height/2,this.width,this.height);
+            this.context.restore();
+            if(KEY_STATUS.left && KEY_STATUS.top) {
+
+            }
+            else if (KEY_STATUS.left) {
                 this.x -= this.speed;
                 this.rotation = 180;
                 if (this.x <= 0) {
@@ -180,7 +188,7 @@ function People(){
                 }
 
             }
-            if (KEY_STATUS.up) {
+            else if (KEY_STATUS.up) {
                 this.rotation = 270;
                 this.y -= this.speed;
                 if (this.y <= 0) {
@@ -199,6 +207,19 @@ function People(){
                     this.y -= this.speed;
                 }
 
+            }
+
+            if(KEY_STATUS.left && KEY_STATUS.up) {
+                this.rotation=225;
+            }
+            else if(KEY_STATUS.left && KEY_STATUS.down) {
+                this.rotation=135;
+            }
+            else if(KEY_STATUS.right && KEY_STATUS.up) {
+                this.rotation=315;
+            }
+            else if(KEY_STATUS.right && KEY_STATUS.down) {
+                this.rotation=45;
             }
         }
         this.draw();
