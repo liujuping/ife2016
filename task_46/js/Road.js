@@ -2,11 +2,11 @@
  * Created by wangtingdong on 16/4/26.
  */
 
-var Road=(function(start,end,map,OBSTACLE){
-    var openList=[],closeList=[];
 
-    start['G']=0;
-    openList.push(start);
+function searchRoad(start_x,start_y,end_x,end_y,map){
+    var openList=[],closeList=[],result=[],result_index;
+
+    openList.push({x:start_x,y:start_y,G:0});
 
     do{
         var currentPoint = openList.pop();
@@ -17,15 +17,16 @@ var Road=(function(start,end,map,OBSTACLE){
             if (!(
                 item.x<0 ||
                 item.y<0 ||
-                item.x>(map.length-1) ||
-                item.y>(map[1].length-1) ||
-                map[item.x][item.y] == OBSTACLE ||
+                item.x>MAP.rows ||
+                item.y>MAP.cols ||
+                MAP.arr[item.x][item.y] == 1 ||
                 existList(item, closeList) ||
-                map[item.x][currentPoint.y]==OBSTACLE ||
-                map[currentPoint.x][item.y]==OBSTACLE)) {
+                MAP.arr[item.x][currentPoint.y]==1 ||
+                MAP.arr[currentPoint.x][item.y]==1)) {
+
                 var g = currentPoint.G + ((currentPoint.x - item.x) * (currentPoint.y - item.y) == 0 ? 10 : 14);
                 if (!existList(item, openList)) {
-                    item['H'] = Math.abs(end.x - item.x) * 10 + Math.abs(end.y - item.y) * 10;
+                    item['H'] = Math.abs(end_x - item.x) * 10 + Math.abs(end_y - item.y) * 10;
                     item['G'] = g;
                     item['F'] = item.H + item.G;
                     item['parent'] = currentPoint;
@@ -43,35 +44,29 @@ var Road=(function(start,end,map,OBSTACLE){
             }
         }
         if(openList.length==0) {
-            alert('傻逼过不去');
             break;
         }
-        openList.sort(sortF);    }while(!existList(end,openList));
+        openList.sort(sortF);
+    }while(!(result_index=existList({x:end_x,y:end_y},openList)));
 
-    function getResult(){
-        var result=[],
-            index=existList(end,openList);
-        if(!index) {
-            result=[];
-        }
-        else {
-            var currentObj=openList[index];
-            do{
-                result.unshift({
-                    x:currentObj.x,
-                    y:currentObj.y
-                });
-                currentObj=currentObj.parent;
-            }while (currentObj!=start);
 
-        }
-        return result;
+    if(!result_index) {
+        result=[];
     }
+    else {
+        var currentObj=openList[result_index];
+        do{
+            result.unshift({
+                x:currentObj.x,
+                y:currentObj.y
+            });
+            currentObj=currentObj.parent;
+        }while (currentObj.x!=start_x || currentObj.y!=start_y);
 
-    return {
-        getResult:getResult
     }
-});
+    return result;
+
+}
 
 function sortF(a,b){
     return b.F- a.F;
