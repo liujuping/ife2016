@@ -10,7 +10,7 @@ function init() {
     }
 }
 
-
+//图片仓库，方便调用图片
 var imageRepository = new function() {
     this.background = new Image();
     this.people=new Image();
@@ -45,6 +45,7 @@ var imageRepository = new function() {
     this.target.src='img/target.png';
 };
 
+//抽象类，需要在地图中画的对象
 function Drawable() {
     this.init = function(x, y,width,height) {
         this.x = x;
@@ -61,10 +62,11 @@ function Drawable() {
     };
 }
 
+//背景，障碍物和空地的绘制
 function Background() {
     var status={
-        NULL:0,
-        OBSTACLE:1
+        NULL:0,     //空地值
+        OBSTACLE:1  //障碍物值
     };
 
     function initMap(){
@@ -78,6 +80,7 @@ function Background() {
         }
     }
 
+    //随机一段路，保证目标是能达到的
     function randomRoad(){
         var x=0, y= 0;
         while (x!=MAP.rows-2 || y != MAP.cols-2) {
@@ -97,6 +100,7 @@ function Background() {
         MAP.arr[x][y]=2;
     }
 
+    //随机创建障碍物
     function createObstacle(num) {
         for (var i = 0; i < num; i++) {
             var x = parseInt(Math.random(i) * MAP.rows),
@@ -111,6 +115,7 @@ function Background() {
         }
     }
 
+    //根据地图的数组画出空地和障碍物
     this.draw = function() {
         initMap();
         randomRoad();
@@ -130,11 +135,12 @@ function Background() {
 }
 Background.prototype = new Drawable();
 
+//移动的对象
 function People(){
-    this.rotation=0;
-    this.speed=2;
-    this.isRoute=false;
-    this.routeMoveArr=[];
+    this.rotation=0;        //旋转的角度
+    this.speed=1;           //速度
+    this.isRoute=false;     //是否是按路线移动
+    this.routeMoveArr=[];   //存储路线的数组
     this.draw=function(){
         var angleInRadians=this.rotation*Math.PI/180;
         this.context.save();
@@ -144,6 +150,7 @@ function People(){
         this.context.restore();
     };
 
+    //判断移动的方向有没有障碍物
     function isObstacle(x,y,width,height){
         var left_x=parseInt(x/MAP.cell_width),
             top_y=parseInt(y/MAP.cell_height),
@@ -225,7 +232,7 @@ function People(){
         this.draw();
     };
     this.routeChange=function() {
-
+        //重新设置移动的方向
         KEY_STATUS['left'] = false;
         KEY_STATUS['right'] = false;
         KEY_STATUS['up'] = false;
@@ -271,6 +278,7 @@ function People(){
 }
 People.prototype=new Drawable();
 
+//要到达的目标
 function Target(){
     this.draw=function(){
         this.context.drawImage(imageRepository.target,this.x,this.y,this.width,this.height);
