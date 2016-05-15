@@ -75,6 +75,19 @@ var musicRepository=new  function(){
     this.failMusic.load();
 };
 
+function checkReadyState() {
+    if (musicRepository.gameInMusic.readyState === 4 &&
+        musicRepository.explodeMusic.readyState === 4 &&
+        musicRepository.suceessMusic.readyState===4 &&
+        musicRepository.failMusic.readyState===4) {
+        window.clearInterval(game.checkAudio);
+        game_wait_page.style.display = "none";
+        game_enter_page.style.display='block';
+        //game.start();
+    }
+}
+
+
 function Bullet(object){
     this.alive = false;
     this.self = object;
@@ -611,6 +624,7 @@ function Game() {
 
             this.enemyBulletPool=new Pool(20);
             this.enemyBulletPool.init('enemyBullet');
+            this.checkAudio = window.setInterval(function(){checkReadyState()},1000);
             return true;
         } else {
             return false;

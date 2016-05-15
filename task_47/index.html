@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 </head>
-<body onload="init()">
+<body>
 
 <canvas id="background" width="400" height="600">
     你的浏览器不支持canvas
@@ -17,6 +17,8 @@
     <span>坦克大战</span>
     <span onclick="game.restart()">start game</span>
 </div>
+
+<div id="loading" class="load">Loading</div>
 
 <script src="js/Data.js"></script>
 <script src="js/QuadTree.js"></script>

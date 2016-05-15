@@ -26,4 +26,6 @@ var CANVAS_WIDTH=document.getElementsByTagName('body')[0].offsetWidth,  //画布
         cell_height:34,
         rows:parseInt(CANVAS_WIDTH/34)+1,   //地图横行格数
         cols:parseInt(CANVAS_HEIGHT/34)+1
-    };
+    },
+    game_enter_page=document.getElementById('game-over'),
+    game_wait_page=document.getElementById('loading');
