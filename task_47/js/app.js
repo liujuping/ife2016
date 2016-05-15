@@ -60,8 +60,19 @@ var imageRepository = new function() {
 
 var musicRepository=new  function(){
     this.gameInMusic=new  Audio('music/gameInMusic.mp3');
+    this.explodeMusic= new Audio('music/explore.wav');
+    this.suceessMusic=new Audio('music/success.mp3');
+    this.failMusic=new Audio('music/fail.mp3');
+
     this.gameInMusic.volume=0.3;
+    this.explodeMusic.volume=0.1;
+    this.suceessMusic.volume=0.1;
+    this.failMusic.volume=0.3;
+
     this.gameInMusic.load();
+    this.explodeMusic.load();
+    this.suceessMusic.load();
+    this.failMusic.load();
 };
 
 function Bullet(object){
@@ -445,6 +456,7 @@ function Enemy(){
         this.context.restore();
         this.move();
         if(this.isColliding) {
+            musicRepository.explodeMusic.play();
             return this.explode();
         }
         angleInRadians=this.rotation*Math.PI/180;
@@ -630,6 +642,7 @@ function Game() {
         this.start();
     };
     this.gameOver=function(){
+        musicRepository.failMusic.play();
         document.getElementById('game-over').style.display='block';
     };
 }
@@ -645,6 +658,7 @@ function animate() {
     detectCollision();
 
     if(game.target.isColliding) {
+        //musicRepository.suceessMusic.play();
         game.restart();
         return;
     }
@@ -725,6 +739,9 @@ document.getElementById('people').onclick = function(e){
         end_y= parseInt(e.pageY/MAP.cell_height),
         start_x=parseInt(game.people.x/MAP.cell_width),
         start_y=parseInt(game.people.y/MAP.cell_height);
+    if(start_x==end_x && start_y==end_y) {
+        KEY_STATUS['space']=true;
+    }
     var route=searchRoad(start_x,start_y,end_x,end_y,MAP.arr);
     game.people.isRoute=true;
     game.people.routeMoveArr=route;
