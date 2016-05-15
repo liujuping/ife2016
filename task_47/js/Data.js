@@ -8,13 +8,15 @@ var CANVAS_WIDTH=document.getElementsByTagName('body')[0].offsetWidth,  //画布
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        32:'space'
     },
     KEY_STATUS = {  //记录是否向某方向移动
         'left':false,
         'top':false,
         'right':false,
-        'down':false
+        'down':false,
+        'space':false
     },
     MAP={                                   //这个游戏的地图，主要记录障碍物（1）和空地（0），
         arr:[],                             //二维数组

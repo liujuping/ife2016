@@ -2,6 +2,9 @@
  * Created by wangtingdong on 16/4/26.
  */
 
+/*
+ * 寻路算法，点击后寻路
+ */
 
 function searchRoad(start_x,start_y,end_x,end_y,map){
     var openList=[],    //开启列表
