@@ -76,14 +76,15 @@ var musicRepository=new  function(){
 };
 
 function checkReadyState() {
-    if (musicRepository.gameInMusic.readyState === 4 &&
-        musicRepository.explodeMusic.readyState === 4 &&
-        musicRepository.suceessMusic.readyState===4 &&
-        musicRepository.failMusic.readyState===4) {
-        window.clearInterval(game.checkAudio);
+    if (1
+        //musicRepository.gameInMusic.readyState === 4 &&
+        //musicRepository.explodeMusic.readyState === 4 &&
+        //musicRepository.suceessMusic.readyState===4 &&
+        //musicRepository.failMusic.readyState===4
+        ) {
+        clearInterval(game.checkAudio);
         game_wait_page.style.display = "none";
         game_enter_page.style.display='block';
-        //game.start();
     }
 }
 
