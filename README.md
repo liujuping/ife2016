@@ -1,3 +1,23 @@
+## 部分demo展示
+
+#### task 19
+[可视化冒泡排序展示](http://liujuping.github.io/ife2016/task_19/)
+
+#### task 47
+[简易版坦克大战](http://liujuping.github.io/ife2016/task_47/)
+
+#### task 12
+[纯css实现轮播图](http://liujuping.github.io/ife2016/task_12/)
+
+#### task 26
+[行星与飞船](http://liujuping.github.io/ife2016/task_26/)
+> 指挥官可以发送命令到飞船（命令有一定的丢失可能性），飞船有自己的能源系统
+
+#### task 32
+[表单自动生成](http://liujuping.github.io/ife2016/task_32/)
+
+## 任务介绍模板
+
 > #任务xxxxxxxxxxx  [my demo](http://liujuping.github.io/ife2016/task_x/)
 
 ##### 面向人群：
